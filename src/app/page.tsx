@@ -11,9 +11,20 @@ export default async function Home() {
   return (
     <main className="container">
       <div className="navbar bg-base-100">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+        <div className="flex-1">
+          <a className="btn btn-ghost text-xl">Tarakihi</a>
+        </div>
+
+        <div className="navbar-end">
+          <Link
+            href={session ? "/api/auth/signout" : "/api/auth/signin"}
+            className="btn"
+          >
+            {session ? "Sign out" : "Sign in"}
+          </Link>
+        </div>
       </div>
-      <h1 className="text-5xl">hello world</h1>
+
       <div className="flex flex-col items-center gap-2">
         <p className="text-2xl text-white">
           {hello ? hello.greeting : "Loading tRPC query..."}
