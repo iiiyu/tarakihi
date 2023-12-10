@@ -10,6 +10,7 @@ export default async function Home() {
 
   return (
     <main className="container">
+      {/* Navbar */}
       <div className="navbar bg-base-100">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Tarakihi</a>
@@ -25,6 +26,10 @@ export default async function Home() {
         </div>
       </div>
 
+      {/* Home */}
+      <h1 className="py-6 text-center text-4xl text-slate-50">
+        An AI translator system.
+      </h1>
       <div className="flex flex-col items-center gap-2">
         <p className="text-2xl text-white">
           {hello ? hello.greeting : "Loading tRPC query..."}
