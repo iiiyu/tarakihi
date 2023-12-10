@@ -4,7 +4,7 @@
 // import { getServerAuthSession } from "~/server/auth";
 // import { api } from "~/trpc/server";
 
-export default async function Home() {
+export default function Home() {
   // const hello = await api.post.hello.query({ text: "from tRPC" });
   // const session = await getServerAuthSession();
 
