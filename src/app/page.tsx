@@ -9,7 +9,10 @@ export default async function Home() {
   const session = await getServerAuthSession();
 
   return (
-    <main>
+    <main className="container">
+      <div className="navbar bg-base-100">
+        <a className="btn btn-ghost text-xl">daisyUI</a>
+      </div>
       <h1 className="text-5xl">hello world</h1>
       <div className="flex flex-col items-center gap-2">
         <p className="text-2xl text-white">
