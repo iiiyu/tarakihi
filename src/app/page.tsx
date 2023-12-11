@@ -3,6 +3,7 @@ import Link from "next/link";
 // import { CreatePost } from "~/app/_components/create-post";
 import { getServerAuthSession } from "~/server/auth";
 import { api } from "~/trpc/server";
+import BaseNavbar from "./_components/base-navbar";
 
 export default async function Home() {
   const hello = await api.post.hello.query({ text: "from tRPC" });
@@ -10,8 +11,9 @@ export default async function Home() {
 
   return (
     <main className="container">
+      <BaseNavbar />
       {/* Navbar */}
-      <div className="navbar bg-base-100">
+      {/* <div className="navbar bg-base-100">
         <div className="flex-1">
           <a className="btn btn-ghost text-xl">Tarakihi</a>
         </div>
@@ -24,7 +26,7 @@ export default async function Home() {
             {session ? "Sign out" : "Sign in"}
           </Link>
         </div>
-      </div>
+      </div> */}
 
       {/* Home */}
       <h1 className="py-6 text-center text-4xl text-slate-50">

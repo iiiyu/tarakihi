@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
+import BaseFooter from "./_components/base-footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,7 +22,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const currentYear = new Date().getFullYear();
   return (
     <html lang="en">
       <body
@@ -30,11 +30,7 @@ export default function RootLayout({
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>
-        <footer className="footer footer-center text-base-content p-4">
-          <aside>
-            <p>Copyright © {currentYear} - All right reserved by OhMyApps</p>
-          </aside>
-        </footer>
+        <BaseFooter />
       </body>
     </html>
   );
