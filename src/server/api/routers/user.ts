@@ -1,16 +1,12 @@
 import { z } from "zod";
 
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  publicProcedure,
-} from "~/server/api/trpc";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 export const userRouter = createTRPCRouter({
   checkAuthorizedBySession: publicProcedure
     .input(z.object({ sessionToken: z.string() }))
     .query(async ({ input, ctx }) => {
-      let session = await ctx.db.session.findFirst({
+      const session = await ctx.db.session.findFirst({
         where: { sessionToken: input.sessionToken },
       });
 

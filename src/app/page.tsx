@@ -1,11 +1,11 @@
-import Link from "next/link";
+// import Link from "next/link";
 
 // import { CreatePost } from "~/app/_components/create-post";
 // import { getServerAuthSession } from "~/server/auth";
 // import { api } from "~/trpc/server";
 import BaseNavbar from "./_components/base-navbar";
 
-export default async function Home() {
+export default function Home() {
   // const hello = await api.post.hello.query({ text: "from tRPC" });
   // const session = await getServerAuthSession();
 
