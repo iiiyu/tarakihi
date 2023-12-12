@@ -3,6 +3,7 @@
 // import { CreatePost } from "~/app/_components/create-post";
 // import { getServerAuthSession } from "~/server/auth";
 // import { api } from "~/trpc/server";
+import Link from "next/link";
 import BaseNavbar from "./_components/base-navbar";
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
       <BaseNavbar />
 
       {/* Hero Home */}
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero min-h-screen bg-base-200">
         <div className="hero-content text-center">
           <div className="w-auto">
             <h1 className="text-5xl font-bold">
@@ -25,7 +26,9 @@ export default function Home() {
               Experience the Future of Translation with Our AI Translator Agent
               System – Where Language Knows No Limits.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <Link href="/dashboard" className="btn btn-primary">
+              Get Started
+            </Link>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 export default function Menu() {
   return (
-    <ul className="menu bg-base-200 rounded-box h-screen w-56 flex-none">
+    <ul className="menu h-screen w-56 flex-none rounded-box bg-base-200">
       <li>
-        <a>
+        <Link href="/dashboard">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -18,10 +20,10 @@ export default function Menu() {
             />
           </svg>
           Home
-        </a>
+        </Link>
       </li>
       <li>
-        <a>
+        <Link href="/dashboard/article">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -37,12 +39,12 @@ export default function Menu() {
               d="M7.418 17.861 1 20l2.139-6.418m4.279 4.279 10.7-10.7a3.027 3.027 0 0 0-2.14-5.165c-.802 0-1.571.319-2.139.886l-10.7 10.7m4.279 4.279-4.279-4.279m2.139 2.14 7.844-7.844m-1.426-2.853 4.279 4.279"
             />
           </svg>
-          Translate Agent
-        </a>
+          Article List
+        </Link>
       </li>
 
       <li>
-        <a>
+        <Link href="/dashboard/about">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5"
@@ -58,7 +60,7 @@ export default function Menu() {
             />
           </svg>
           About
-        </a>
+        </Link>
       </li>
     </ul>
   );
