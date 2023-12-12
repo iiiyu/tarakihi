@@ -1,4 +1,5 @@
 import BaseNavbar from "../_components/base-navbar";
+import Menu from "./_components/menu";
 
 export default function DashboardLayout({
   children,
@@ -8,7 +9,10 @@ export default function DashboardLayout({
   return (
     <main className="container">
       <BaseNavbar />
-      <section>{children}</section>
+      <div className="flex flex-row gap-4 pt-4">
+        <Menu />
+        <div className="h-fit w-fit flex-1">{children}</div>
+      </div>
     </main>
   );
 }

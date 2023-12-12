@@ -1,35 +1,37 @@
 import Link from "next/link";
 
 // import { CreatePost } from "~/app/_components/create-post";
-import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
+// import { getServerAuthSession } from "~/server/auth";
+// import { api } from "~/trpc/server";
 import BaseNavbar from "./_components/base-navbar";
 
 export default async function Home() {
-  const hello = await api.post.hello.query({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  // const hello = await api.post.hello.query({ text: "from tRPC" });
+  // const session = await getServerAuthSession();
 
   return (
     <main className="container">
       <BaseNavbar />
-      {/* Navbar */}
-      {/* <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <a className="btn btn-ghost text-xl">Tarakihi</a>
-        </div>
 
-        <div className="navbar-end">
-          <Link
-            href={session ? "/api/auth/signout" : "/api/auth/signin"}
-            className="btn"
-          >
-            {session ? "Sign out" : "Sign in"}
-          </Link>
+      {/* Hero Home */}
+      <div className="hero bg-base-200 min-h-screen">
+        <div className="hero-content text-center">
+          <div className="w-auto">
+            <h1 className="text-5xl font-bold">
+              Breaking Barriers, Building Bridges: Your Gateway to Global
+              Communication.
+            </h1>
+            <p className="py-6">
+              Experience the Future of Translation with Our AI Translator Agent
+              System – Where Language Knows No Limits.
+            </p>
+            <button className="btn btn-primary">Get Started</button>
+          </div>
         </div>
-      </div> */}
+      </div>
 
       {/* Home */}
-      <h1 className="py-6 text-center text-4xl text-slate-50">
+      {/* <h1 className="py-6 text-center text-4xl text-slate-50">
         An AI translator system.
       </h1>
       <div className="flex flex-col items-center gap-2">
@@ -48,7 +50,7 @@ export default async function Home() {
             {session ? "Sign out" : "Sign in"}
           </Link>
         </div>
-      </div>
+      </div> */}
     </main>
   );
 }
