@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 
-export const ArticleRouter = createTRPCRouter({
+export const articleRouter = createTRPCRouter({
   create: protectedProcedure
     .input(
       z.object({
@@ -12,7 +12,7 @@ export const ArticleRouter = createTRPCRouter({
       }),
     )
     .mutation(async ({ ctx, input }) => {
-      return ctx.db.article.create({
+      return await ctx.db.article.create({
         data: {
           title: input.title,
           content: input.content,

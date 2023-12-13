@@ -1,6 +1,56 @@
+"use client";
+
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { set } from "zod";
+import { api } from "~/trpc/react";
+
 export default function Page() {
+  const [title, setTitle] = useState("");
+  const [language, setLanguage] = useState("");
+  const [content, setContent] = useState("");
+
+  const languages = [
+    "English",
+    "Chinese",
+    "Spanish",
+    "French",
+    "German",
+    "Italian",
+    "Portuguese",
+    "Russian",
+    "Arabic",
+    "Japanese",
+  ];
+
+  // const mutation = api.article.create.useMutation();
+
+  const { mutate, isLoading: isCreating } = api.article.create.useMutation({
+    onSuccess: () => {
+      // redirect to article page
+      setTitle("");
+      setLanguage("");
+      setContent("");
+      toast.success("Article created!");
+    },
+    onError: (e) => {
+      // show error
+      console.log(e);
+
+      const errorMessage = e.data?.zodError?.fieldErrors;
+      console.log("$$");
+      console.log(errorMessage);
+
+      if (errorMessage && errorMessage[0]) {
+        toast.error(errorMessage[0].toString());
+      } else {
+        toast.error("Failed to create article! Please try again.");
+      }
+    },
+  });
+
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex w-full flex-col gap-2">
       <h1 className="text-3xl">Create</h1>
       <div className="">
         <div>Title:</div>
@@ -8,29 +58,48 @@ export default function Page() {
           type="text"
           placeholder="Type here"
           className="input input-bordered w-full max-w-xs"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
         />
       </div>
 
       <div>
         <div>Language:</div>
-        <select className="select select-bordered w-full max-w-xs">
-          <option disabled selected>
-            Who shot first?
+        <select
+          className="select select-bordered w-full max-w-xs"
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        >
+          <option disabled value="">
+            Select a language
           </option>
-          <option>Han Solo</option>
-          <option>Greedo</option>
+          {languages.map((lang) => (
+            <option key={lang} value={lang}>
+              {lang}
+            </option>
+          ))}
         </select>
       </div>
 
       <div>
         <div>Content:</div>
         <textarea
-          className="textarea textarea-bordered"
+          className="textarea textarea-bordered "
           placeholder="Bio"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
         ></textarea>
       </div>
       <div>
-        <button className="btn btn-primary">Create</button>
+        <button
+          className="btn btn-primary"
+          disabled={isCreating}
+          onClick={() =>
+            mutate({ title: title, language: language, content: content })
+          }
+        >
+          Create
+        </button>
       </div>
     </div>
   );
