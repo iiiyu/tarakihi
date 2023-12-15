@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 
 import { TRPCReactProvider } from "~/trpc/react";
 import BaseFooter from "./_components/base-footer";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,9 @@ export default function RootLayout({
       <body
         className={`font-sans ${inter.variable} flex h-screen flex-col items-center justify-between`}
       >
+        <div>
+          <Toaster />
+        </div>
         <TRPCReactProvider cookies={cookies().toString()}>
           {children}
         </TRPCReactProvider>

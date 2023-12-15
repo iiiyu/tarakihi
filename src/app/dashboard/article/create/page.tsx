@@ -1,5 +1,7 @@
 "use client";
 
+import { TRPCClientError } from "@trpc/client";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { set } from "zod";
@@ -9,6 +11,7 @@ export default function Page() {
   const [title, setTitle] = useState("");
   const [language, setLanguage] = useState("");
   const [content, setContent] = useState("");
+  const router = useRouter();
 
   const languages = [
     "English",
@@ -32,20 +35,38 @@ export default function Page() {
       setLanguage("");
       setContent("");
       toast.success("Article created!");
+      router.push("/dashboard/article");
     },
+    onSettled(data, error, variables, context) {},
     onError: (e) => {
       // show error
-      console.log(e);
-
-      const errorMessage = e.data?.zodError?.fieldErrors;
-      console.log("$$");
-      console.log(errorMessage);
-
-      if (errorMessage && errorMessage[0]) {
-        toast.error(errorMessage[0].toString());
-      } else {
-        toast.error("Failed to create article! Please try again.");
+      // if (e typeof TRPCClientError) {
+      // } else {
+      //   toast.error("Failed to create article! Please try again.");
+      // }
+      // console.log("$$");
+      // console.log(e);
+      const fieldErrors = e.data?.zodError?.fieldErrors;
+      for (const key in fieldErrors) {
+        const array = fieldErrors[key];
+        if (array) {
+          for (const element of array) {
+            // console.log(element);
+            toast.error("This " + key + element);
+            return;
+          }
+        }
       }
+      // console.log("##");
+      // console.log(errorMessage);
+      // toast.error("Failed to create article! Please try again.");
+      // if (fieldErrors && Array.isArray(fieldErrors)) {
+      //   fieldErrors.forEach((fieldError: any) => {
+      //     toast.error(fieldError.message);
+      //   });
+      // } else {
+      //   toast.error("Failed to create article! Please try again.");
+      // }
     },
   });
 
