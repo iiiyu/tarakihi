@@ -1,10 +1,8 @@
 "use client";
 
-import { TRPCClientError } from "@trpc/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { set } from "zod";
 import { api } from "~/trpc/react";
 
 export default function Page() {
@@ -37,7 +35,6 @@ export default function Page() {
       toast.success("Article created!");
       router.push("/dashboard/article");
     },
-    onSettled(data, error, variables, context) {},
     onError: (e) => {
       // show error
       // if (e typeof TRPCClientError) {
