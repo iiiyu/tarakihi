@@ -86,7 +86,7 @@ const ArticleList = () => {
           {/* head */}
           <thead>
             <tr>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>Title</th>
               <th>Language</th>
               <th>Created</th>
@@ -96,9 +96,9 @@ const ArticleList = () => {
           <tbody>
             {data?.articles &&
               Array.isArray(data.articles) &&
-              data.articles.map((article: Article) => (
+              data.articles.map((article: Partial<Article>) => (
                 <tr key={article.id}>
-                  <th>{article.id}</th>
+                  {/* <th>{article.id}</th> */}
                   <td>{article.title}</td>
                   <td>{article.language}</td>
                   <td>{moment(article.createdAt).format("MMM Do YY")}</td>

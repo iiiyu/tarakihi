@@ -78,6 +78,12 @@ export const articleRouter = createTRPCRouter({
           createdBy: { id: ctx.session.user.id },
           originalArticleId: null,
         },
+        select: {
+          id: true,
+          title: true,
+          language: true,
+          createdAt: true,
+        },
       });
       const total = await ctx.db.article.count({
         where: {
@@ -89,6 +95,18 @@ export const articleRouter = createTRPCRouter({
         articles: articles,
         total,
       };
+    }),
+
+  getArticleById: protectedProcedure
+    .input(z.object({ id: z.string() }))
+    .query(async ({ ctx, input }) => {
+      const article = await ctx.db.article.findUnique({
+        where: {
+          id: input.id,
+          createdBy: { id: ctx.session.user.id },
+        },
+      });
+      return article;
     }),
 
   // getLatest: protectedProcedure.query(({ ctx }) => {
