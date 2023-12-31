@@ -1,6 +1,6 @@
 "use client";
 // import { LoadingPage } from "~/app/_components/loading";
-import { trpc } from "~/trpc/react";
+// import { trpc } from "~/trpc/react";
 import Article from "../_components/article";
 
 export default function Page({ params }: { params: { slug: string } }) {
