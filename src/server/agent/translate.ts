@@ -30,6 +30,9 @@ export const TranslateNews = async (input: TranslateNewsInput) : Promise<Transla
     anthropicApiKey: env.ANTHROPIC_API_KEY,
   });
 
+
+  console.log(input)
+
   const chain = prompt1.pipe(model).pipe(new StringOutputParser());
 
   const combinedChain = RunnableSequence.from([
