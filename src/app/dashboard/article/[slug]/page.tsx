@@ -14,8 +14,8 @@ export default function Page({ params }: { params: { slug: string } }) {
 
   const testClick = async () => {
     console.log("test click");
-    const result = await trpc.task.tryTest.query();
-    console.log(result);
+    // const result = await trpc.task.tryTest.query();
+    // console.log(result);
   };
 
   return (
