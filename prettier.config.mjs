@@ -11,11 +11,13 @@ const config = {
     "<TYPES>",
     "<TYPES>^[./]"
   ],
-  printWidth: 120,
-  trailingComma: "es5",
-  singleQuote: true,
+  arrowParens: "always",
+  printWidth: 80,
+  singleQuote: false,
+  jsxSingleQuote: false,
+  semi: true,
+  trailingComma: "all",
   tabWidth: 2,
-  semi: false,
 };
 
 export default config;

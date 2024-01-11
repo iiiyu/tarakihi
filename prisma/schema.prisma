@@ -63,6 +63,7 @@ model User {
   sessions      Session[]
   posts         Post[]
   articles      Article[]
+  tasks         Task[]
 }
 
 model VerificationToken {
@@ -88,4 +89,26 @@ model Article {
   createdById       String
 
   @@index([title])
+}
+
+enum TaskStatus {
+  ACTIVE
+  COMPLETED
+  FAILED
+  DELAYED
+  PAUSED
+  WAITING
+}
+
+model Task {
+  id          String     @id @default(cuid())
+  status      TaskStatus @default(ACTIVE)
+  data        Json?
+  description String?
+  jobId       String
+  relatedId   String?
+  createdBy   User       @relation(fields: [createdById], references: [id])
+  createdById String
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
 }
