@@ -37,6 +37,11 @@ export const env = createEnv({
     ANTHROPIC_API_KEY: z.string(),
     REDIS_URL: z.string(),
     OPENAI_API_KEY: z.string(),
+    QSTASH_URL: z.string(),
+    QSTASH_TOKEN: z.string(),
+    QSTASH_CURRENT_SIGNING_KEY: z.string(),
+    QSTASH_NEXT_SIGNING_KEY: z.string(),
+
   },
 
   /**
@@ -64,6 +69,10 @@ export const env = createEnv({
     ANTHROPIC_API_KEY: process.env.ANTHROPIC_API_KEY,
     REDIS_URL: process.env.REDIS_URL,
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    QSTASH_URL: process.env.QSTASH_URL,
+    QSTASH_TOKEN: process.env.QSTASH_TOKEN,
+    QSTASH_CURRENT_SIGNING_KEY: process.env.QSTASH_CURRENT_SIGNING_KEY,
+    QSTASH_NEXT_SIGNING_KEY: process.env.QSTASH_NEXT_SIGNING_KEY,
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
